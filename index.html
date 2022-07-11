@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jeu de lancer de d&eacute;s</title>
+    <link rel="stylesheet" href="./style.css">
+    <script defer src="./main.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body>
+    <main>
+        <article>
+            <section class="player-screen col-md-6">
+                <h2>player 1</h2>
+                <div class="player-global-score">43</div>
+                <div class="player-current-score">
+                    <span>current</span>
+                    <span></span>
+                </div>
+            </section>
+            <section class="player-screen col-md-6">
+                <h2>player 2</h2>
+                <div class="player-global-score"></div>
+                <div class="player-current-score">
+                    <span>current</span>
+                    <span></span>
+                </div>
+            </section>
+            <section class="game-condition">
+                <button type="button">
+                    <svg viewBox="0 0 40 40" x="0px" y="0px" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="20" cy="20" r="17.5"/>
+                        <line x1="6" y1="20" x2="34" y2="20"/>
+                        <line x1="20" y1="6" x2="20" y2="34"/>
+                    </svg>
+                    new game
+                </button>
+                <div class="dice"></div>
+                <button type="button">
+                    <svg viewBox="0 0 40 40" x="0px" y="0px" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M37.3,17.5c0.1,0.8,0.2,1.7,0.2,2.5c0,9.7-7.8,17.5-17.5,17.5c-7,0-13-4.1-15.8-10"/>
+                        <path d="M2.8,23.2c-0.2-1-0.3-2.1-0.3-3.2c0-9.7,7.8-17.5,17.5-17.5c7.1,0,13.3,4.3,16,10.4"/>
+                        <polyline points="34.6,20.2 37.3,17.5 40,20.1 "/>
+                        <polyline points="5.6,20.5 2.7,23.2 0,20.6 "/>
+                    </svg>
+                    roll dice
+                </button>
+                <button type="button">
+                    <svg viewBox="0 0 40 40" x="0px" y="0px" xmlns="http://www.w3.org/2000/svg">
+                        <line x1="20" y1="2.5" x2="20" y2="30.5"/>
+                        <rect x="2.5" y="10.5" class="st1" width="35" height="27"/>
+                        <polyline points="24,26.4 20,30.5 16,26.5 "/>
+                    </svg>
+                    hold
+                </button>
+            </section>
+        </article>
+    </main>
+</body>
+</html>
