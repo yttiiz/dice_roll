@@ -99,22 +99,37 @@ article {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+    align-items: center;
 }
 
 .game-condition button {
     display: flex;
     align-items: center;
     align-self: center;
-    font-size: 1rem;
+    font-size: 1.5rem;
     font-weight: 400;
     text-transform: uppercase;
 }
 
-.game-condition svg {
+.game-condition button svg {
     width: 25px;
     height: auto;
     fill: none;
     stroke: var(--red);
     stroke-width: calc(1rem / 8);
     margin-right: calc(1rem / 16 * 15);
+}
+
+.dice svg {
+    width: 100%;
+    height: auto;
+    fill: var(--red);
+}
+
+.dice {
+    width: calc(1rem / 16 * 150);
+    height: calc(1rem / 16 * 150);
+    box-shadow: 0 0 15px rgb(0 0 0 / .3);
+    margin: calc(1rem / 16 * 200) 0;
+    padding: calc(1rem / 16 * 20);
 }
