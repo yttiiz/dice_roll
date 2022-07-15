@@ -25,18 +25,58 @@ btns.forEach((btn, key) => {
     }
 })
 
+const players = new Players()
+
 //===================| Functions |===================//
 /**
- * Constructor function of a player.
+ * Constructor function of the players management.
  */
-function Player() {
-    this.round = 0
-    this.global = 0
-    this.getRound = function() {
-        return this.round
+function Players() {
+    const globalScoreDivs = document.querySelectorAll('.player-global-score div'), currentScoreSpans = document.querySelectorAll('.player-current-score span:last-child')
+
+    this.player1 = {
+        id: 0,
+        round: 0,
+        global: 0,
+        playing: true
     }
+    this.player2 = {
+        id: 1,
+        round: 0,
+        global: 0,
+        playing: false
+    }
+
     this.setRound = function(newRound) {
-        this.round = newRound
+        const setPlayer = (player) => {
+            if (newRound > 1) {
+                player.round += newRound
+                currentScoreSpans[player.id].textContent = player.round
+            } else {
+                player.round = 0
+                player.playing = false
+
+                if (player.id === 0) {
+                    this.player2.playing = true
+                } else if (player.id === 1) {
+                    this.player1.playing = true
+                }
+            }
+        }
+
+        switch(true) {
+            case this.player1.playing:
+                setPlayer(this.player1)
+                break
+
+            case this.player2.playing:
+                setPlayer(this.player2)
+                break
+        }
+    }
+
+    this.setGlobal = function(newGlobal) {
+        this.global = newGlobal
     }
 }
 
@@ -46,6 +86,7 @@ function Player() {
 function rollDice() {
     const num = Math.floor(((Math.random() * 6) + 1))
     displayDiceSvg.innerHTML = diceSvg[num]
+    players.setRound(num)
 }
 
 function hold() {
