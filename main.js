@@ -51,14 +51,12 @@ function Players() {
                 this.player2.playing = true
                 spanMarker[num + 1].classList.remove('none')
                 spanMarker[num + 1].parentNode.parentNode.parentNode.classList.add('active')
-                screenIndicator.textContent = `Player 2 turn !`
                 break
                 
             case 1:
                 this.player1.playing = true
                 spanMarker[num - 1].classList.remove('none')
                 spanMarker[num - 1].parentNode.parentNode.parentNode.classList.add('active')
-                screenIndicator.textContent = `Player 1 turn !`
                 break
         }
     }
@@ -77,6 +75,16 @@ function Players() {
                 fn(this.player2)
                 break
         }
+    }
+
+    /**
+     * Set the content of the `SVG` and `Span` Elements.
+     * @param {Object} player Current player.
+     * @param {Number} num Ramdom number of the dice.
+     */
+    const setSVGandSpanContent = (player, num) => {
+        displayDiceSvg.innerHTML = diceSvg[num]
+        currentScoreSpans[player.id].textContent = player.round
     }
 
     this.player1 = {
@@ -98,13 +106,15 @@ function Players() {
          * @param {Object} player Current player.
          */
         const setPlayerRound = (player) => {
+            if (player.global >= 100) return
+
             if (newRound > 1) {
                 player.round += newRound
-                currentScoreSpans[player.id].textContent = player.round
+                setSVGandSpanContent(player, newRound)
             } else {
                 player.round = 0
                 player.playing = false
-                currentScoreSpans[player.id].textContent = player.round
+                setSVGandSpanContent(player, newRound)
                 setActivePlayer(player.id)
             }
         }
@@ -123,6 +133,7 @@ function Players() {
 
             if (player.global >= 100) {
                 globalScoreDivs[player.id].textContent = player.global
+                screenIndicator.classList.remove('hidden')
                 screenIndicator.textContent = `Player ${player.id + 1} win the game with ${player.global} points.`
                 return
             }
@@ -142,7 +153,6 @@ function Players() {
  */
 function rollDice() {
     const num = Math.floor(((Math.random() * 6) + 1))
-    displayDiceSvg.innerHTML = diceSvg[num]
     players.setRound(num)
 }
 
@@ -157,4 +167,5 @@ function hold() {
  * Reinitialisation of the game.
  */
 function restart() {
+    window.document.location.reload()
 }

@@ -165,3 +165,7 @@ article {
     padding: calc(1rem / 16 * 15);
     text-align: center;
 }
+
+.indicator.hidden {
+    visibility: hidden;
+}
