@@ -12,9 +12,9 @@
 <body>
     <main>
         <article>
-            <section class="player-screen col-md-6">
+            <section class="player-screen col-md-6 active">
                 <div class="player-global-score">
-                    <h2>player 1</h2>
+                    <h2>player 1<span class="span-mark"></span></h2>
                     <div>0</div>
                 </div>
                 <div class="player-current-score">
@@ -24,7 +24,7 @@
             </section>
             <section class="player-screen col-md-6">
                 <div class="player-global-score">
-                    <h2>player 2</h2>
+                    <h2>player 2<span class="span-mark none"></span></h2>
                     <div>0</div>
                 </div>
                 <div class="player-current-score">
@@ -51,6 +51,7 @@
                         <circle cx="41" cy="25" r="4"/>
                     </svg>
                 </div>
+                <p class="indicator">Let's start the game !</p>
                 <button type="button">
                     <svg viewBox="0 0 40 40" x="0px" y="0px" xmlns="http://www.w3.org/2000/svg">
                         <path d="M37.3,17.5c0.1,0.8,0.2,1.7,0.2,2.5c0,9.7-7.8,17.5-17.5,17.5c-7,0-13-4.1-15.8-10"/>

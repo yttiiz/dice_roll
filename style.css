@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap');
 
-:root {--red: #f24942; --dark-grey: #202020; --light-grey: #c6c6c6; --clear-grey: #f7f7f7;}
+:root {--red: #f24942; --dark-grey: #202020; --light-grey: #eeeeee; --clear-grey: #f7f7f7;}
 
 /*=====================================| RESET |=====================================*/
 body, body * {
@@ -44,12 +44,6 @@ article {
     display: flex;
 }
 
-.player-screen h2 {
-    font-size: 2.5rem;
-    font-weight: 300;
-    text-transform: uppercase;
-}
-
 .player-screen, .game-condition, .player-global-score, .player-current-score {
     display: flex;
     flex-direction: column;
@@ -62,6 +56,32 @@ article {
 
 .player-screen {
     padding: 8rem 4rem;
+}
+
+.player-screen.active {
+    background: var(--light-grey);
+}
+
+.player-screen h2 {
+    position: relative;
+    font-size: 2.5rem;
+    font-weight: 300;
+    text-transform: uppercase;
+}
+
+.span-mark {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 50%;
+    right: -40px;
+    transform: translateY(-50%);
+    background: var(--red);
+    border-radius: 50%;
+}
+
+.span-mark.none {
+    display: none;
 }
 
 .player-global-score h2 {
@@ -120,16 +140,28 @@ article {
     margin-right: calc(1rem / 16 * 15);
 }
 
+.dice, .indicator {
+    background: white;
+    box-shadow: 0 0 15px rgb(0 0 0 / .3);
+}
+
+.dice {
+    width: calc(1rem / 16 * 150);
+    height: calc(1rem / 16 * 150);
+    margin: calc(1rem / 16 * 200) 0;
+    padding: calc(1rem / 16 * 20);
+}
+
 .dice svg {
     width: 100%;
     height: auto;
     fill: var(--red);
 }
 
-.dice {
-    width: calc(1rem / 16 * 150);
-    height: calc(1rem / 16 * 150);
-    box-shadow: 0 0 15px rgb(0 0 0 / .3);
-    margin: calc(1rem / 16 * 200) 0;
-    padding: calc(1rem / 16 * 20);
+.indicator {
+    width: calc(1rem / 16 * 380);
+    height: calc(1rem / 16 * 65);
+    font-size: 1.3rem;
+    padding: calc(1rem / 16 * 15);
+    text-align: center;
 }
