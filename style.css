@@ -16,17 +16,17 @@
 
     /*--------------< Ratios >--------------*/
     --base-ratio: 1;
+    --large-ratio: 1.5;
     --btn-svg-text-ratio: .6;
     --mark-ratio: .5;
     --dice-ratio: 3.7;
-    --player-screen-ratio: 1.5;
 
     /*--------------< Responsive applications >--------------*/
     --base-clamp: clamp(calc(var(--min-size) * var(--base-ratio)), calc(var(--base-size) * var(--base-ratio)), calc(var(--max-size) * var(--base-ratio)));
+    --large-clamp: clamp(calc(var(--min-size) * var(--large-ratio)), calc(var(--base-size) * var(--large-ratio)), calc(var(--max-size) * var(--large-ratio)));
     --btn-svg-text-clamp: clamp(calc(var(--min-size) * var(--btn-svg-text-ratio)), calc(var(--base-size) * var(--btn-svg-text-ratio)), calc(var(--max-size) * var(--btn-svg-text-ratio)));
     --mark-clamp: clamp(calc(var(--min-size) * var(--mark-ratio)), calc(var(--base-size) * var(--mark-ratio)), calc(var(--max-size) * var(--mark-ratio)));
     --dice-clamp: clamp(calc(var(--min-size) * var(--dice-ratio)), calc(var(--base-size) * var(--dice-ratio)), calc(var(--max-size) * var(--dice-ratio)));
-    --player-screen-clamp: clamp(calc(var(--min-size) * var(--player-screen-ratio)), calc(var(--base-size) * var(--player-screen-ratio)), calc(var(--max-size) * var(--player-screen-ratio)));
 }
 
 /*=====================================| RESET |=====================================*/
@@ -83,7 +83,7 @@ article {
 
 .player-screen {
     width: 50%;
-    padding: var(--player-screen-clamp) calc(var(--player-screen-clamp) / 2);
+    padding: var(--large-clamp) calc(var(--large-clamp) / 2);
 }
 
 .player-screen.active {
@@ -91,19 +91,14 @@ article {
 }
 
 .player-screen h2 {
-    position: relative;
     font-size: var(--base-clamp);
     font-weight: 300;
     text-transform: uppercase;
 }
 
 .span-mark {
-    position: absolute;
     width: var(--mark-clamp);
     aspect-ratio: 1 / 1;
-    top: 50%;
-    right: calc(var(--base-clamp) * -1);
-    transform: translateY(-50%);
     background: var(--red);
     border-radius: 50%;
 }
@@ -112,12 +107,14 @@ article {
     display: none;
 }
 
-.player-global-score h2 {
-    position: relative;
+.player-global-score > div:first-child {
+    display: inherit;
+    align-items: center;
+    gap: var(--mark-clamp)
 }
 
-.player-global-score div {
-    font-size: 5rem;
+.player-global-score > div:last-child {
+    font-size: var(--large-clamp);
     font-weight: 300;
     color: var(--red);
 }
@@ -139,7 +136,7 @@ article {
 }
 
 .player-current-score span:last-child {
-    font-size: 4.8rem;
+    font-size: var(--large-clamp);
     color: var(--light-grey);
 }
 
@@ -166,12 +163,12 @@ article {
     fill: none;
     stroke: var(--red);
     stroke-width: .2rem;
-    margin-right: 3rem;
+    margin-right: var(--mark-clamp);
 }
 
 .dice, .indicator {
     background: var(--white);
-    box-shadow: 0 0 15px rgb(var(--dark) / .3);
+    box-shadow: 0 0 var(--mark-clamp) rgb(var(--dark) / .3);
 }
 
 .dice {
@@ -200,11 +197,29 @@ article {
 }
 
 @media screen and (max-width: 1050px) {
+    body {
+        padding: 0;
+    }
+
     .game-condition {
         height: 50%;
     }
 
     .dice {
         margin: 2rem 0
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .player-global-score > div:first-child {
+        position: relative;
+    }
+
+    .span-mark {
+        position: absolute;
+        width: calc(var(--mark-clamp) * .5);
+        left: 50%;
+        top: -1rem;
+        transform: translateX(-50%);
     }
 }

@@ -34,7 +34,7 @@ const players = new Players()
  * Constructor function of the players management.
  */
 function Players() {
-    const globalScoreDivs = document.querySelectorAll('.player-global-score div'),
+    const globalScoreDivs = document.querySelectorAll('.player-global-score > div:last-child'),
         currentScoreSpans = document.querySelectorAll('.player-current-score span:last-child'),
         spanMarker = document.querySelectorAll('.span-mark')
 
