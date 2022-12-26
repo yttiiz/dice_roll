@@ -149,9 +149,10 @@ article {
 }
 
 .game-condition button {
-    display: flex;
+    display: inherit;
     align-items: center;
     align-self: center;
+    gap: var(--mark-clamp);
     font-size: var(--btn-svg-text-clamp);
     font-weight: 400;
     text-transform: uppercase;
@@ -163,7 +164,6 @@ article {
     fill: none;
     stroke: var(--red);
     stroke-width: .2rem;
-    margin-right: var(--mark-clamp);
 }
 
 .dice, .indicator {
@@ -201,10 +201,6 @@ article {
         padding: 0;
     }
 
-    .game-condition {
-        height: 50%;
-    }
-
     .dice {
         margin: 2rem 0
     }
@@ -221,5 +217,11 @@ article {
         left: 50%;
         top: -1rem;
         transform: translateX(-50%);
+    }
+}
+
+@media screen and (max-width: 900px) and (orientation: landscape) {
+    :root {
+        --base-size: 5vh;
     }
 }
