@@ -17,15 +17,15 @@
     /*--------------< Ratios >--------------*/
     --base-ratio: 1;
     --large-ratio: 1.5;
+    --medium-ratio: .5;
     --btn-svg-text-ratio: .6;
-    --mark-ratio: .5;
     --dice-ratio: 3.7;
 
     /*--------------< Responsive applications >--------------*/
     --base-clamp: clamp(calc(var(--min-size) * var(--base-ratio)), calc(var(--base-size) * var(--base-ratio)), calc(var(--max-size) * var(--base-ratio)));
     --large-clamp: clamp(calc(var(--min-size) * var(--large-ratio)), calc(var(--base-size) * var(--large-ratio)), calc(var(--max-size) * var(--large-ratio)));
+    --medium-clamp: clamp(calc(var(--min-size) * var(--medium-ratio)), calc(var(--base-size) * var(--medium-ratio)), calc(var(--max-size) * var(--medium-ratio)));
     --btn-svg-text-clamp: clamp(calc(var(--min-size) * var(--btn-svg-text-ratio)), calc(var(--base-size) * var(--btn-svg-text-ratio)), calc(var(--max-size) * var(--btn-svg-text-ratio)));
-    --mark-clamp: clamp(calc(var(--min-size) * var(--mark-ratio)), calc(var(--base-size) * var(--mark-ratio)), calc(var(--max-size) * var(--mark-ratio)));
     --dice-clamp: clamp(calc(var(--min-size) * var(--dice-ratio)), calc(var(--base-size) * var(--dice-ratio)), calc(var(--max-size) * var(--dice-ratio)));
 }
 
@@ -97,7 +97,7 @@ article {
 }
 
 .span-mark {
-    width: var(--mark-clamp);
+    width: var(--medium-clamp);
     aspect-ratio: 1 / 1;
     background: var(--red);
     border-radius: 50%;
@@ -110,7 +110,7 @@ article {
 .player-global-score > div:first-child {
     display: inherit;
     align-items: center;
-    gap: var(--mark-clamp)
+    gap: var(--medium-clamp)
 }
 
 .player-global-score > div:last-child {
@@ -120,7 +120,7 @@ article {
 }
 
 .player-current-score {
-    font-size: var(--mark-clamp);
+    font-size: var(--medium-clamp);
     padding: calc(var(--base-clamp) / 2) var(--base-clamp);
     background: var(--red);
     width: max-content;
@@ -132,7 +132,7 @@ article {
 
 .player-current-score span:first-child {
     text-transform: uppercase;
-    margin-bottom: var(--mark-clamp);
+    margin-bottom: var(--medium-clamp);
 }
 
 .player-current-score span:last-child {
@@ -152,7 +152,7 @@ article {
     display: inherit;
     align-items: center;
     align-self: center;
-    gap: var(--mark-clamp);
+    gap: var(--medium-clamp);
     font-size: var(--btn-svg-text-clamp);
     font-weight: 400;
     text-transform: uppercase;
@@ -168,14 +168,14 @@ article {
 
 .dice, .indicator {
     background: var(--white);
-    box-shadow: 0 0 var(--mark-clamp) rgb(var(--dark) / .3);
+    box-shadow: 0 0 var(--medium-clamp) rgb(var(--dark) / .3);
 }
 
 .dice {
     width: var(--dice-clamp);
     aspect-ratio: 1 / 1;
     margin: 20rem 0;
-    padding: var(--mark-clamp);
+    padding: var(--medium-clamp);
 }
 
 .dice svg {
@@ -187,8 +187,8 @@ article {
 .indicator {
     max-width: 38rem;
     max-height: 6.5rem;
-    font-size: var(--mark-clamp);
-    padding: var(--mark-clamp);
+    font-size: var(--medium-clamp);
+    padding: var(--medium-clamp);
     text-align: center;
 }
 
@@ -213,7 +213,7 @@ article {
 
     .span-mark {
         position: absolute;
-        width: calc(var(--mark-clamp) * .5);
+        width: calc(var(--medium-clamp) * .5);
         left: 50%;
         top: -1rem;
         transform: translateX(-50%);
