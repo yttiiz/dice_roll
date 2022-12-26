@@ -1,6 +1,33 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap');
 
-:root {--red: #f24942; --dark-grey: #202020; --light-grey: #eeeeee; --clear-grey: #f7f7f7;}
+:root {
+    /*--------------< Colors >--------------*/
+    --red: #f24942;
+    --dark: 0 0 0;
+    --dark-grey: #202020;
+    --light-grey: #eeeeee;
+    --clear-grey: #f7f7f7;
+    --white: #fff;
+
+    /*--------------< Sizes >--------------*/
+    --base-size: 5vw;
+    --min-size: 2.7rem;
+    --max-size: 4rem;
+
+    /*--------------< Ratios >--------------*/
+    --base-ratio: 1;
+    --btn-svg-text-ratio: .6;
+    --mark-ratio: .5;
+    --dice-ratio: 3.7;
+    --player-screen-ratio: 1.5;
+
+    /*--------------< Responsive applications >--------------*/
+    --base-clamp: clamp(calc(var(--min-size) * var(--base-ratio)), calc(var(--base-size) * var(--base-ratio)), calc(var(--max-size) * var(--base-ratio)));
+    --btn-svg-text-clamp: clamp(calc(var(--min-size) * var(--btn-svg-text-ratio)), calc(var(--base-size) * var(--btn-svg-text-ratio)), calc(var(--max-size) * var(--btn-svg-text-ratio)));
+    --mark-clamp: clamp(calc(var(--min-size) * var(--mark-ratio)), calc(var(--base-size) * var(--mark-ratio)), calc(var(--max-size) * var(--mark-ratio)));
+    --dice-clamp: clamp(calc(var(--min-size) * var(--dice-ratio)), calc(var(--base-size) * var(--dice-ratio)), calc(var(--max-size) * var(--dice-ratio)));
+    --player-screen-clamp: clamp(calc(var(--min-size) * var(--player-screen-ratio)), calc(var(--base-size) * var(--player-screen-ratio)), calc(var(--max-size) * var(--player-screen-ratio)));
+}
 
 /*=====================================| RESET |=====================================*/
 body, body * {
@@ -14,17 +41,17 @@ button {
     border: none;
     outline: none;
     background: none;
-    padding: calc(1rem / 16 * 10);
+    padding: 1rem;
 }
 
 /*=====================================| MAIN |=====================================*/
 html {
-    font-size: 16px;
+    font-size: 62.5%;
 }
 
 body {
     background: linear-gradient(#b58851, #81512d) no-repeat;
-    padding: calc(1rem / 16 * 20) calc(1rem / 16 * 30);
+    padding: 2rem 3rem;
     height: 100vh;
     color: var(--dark-grey)
 }
@@ -35,8 +62,8 @@ main, article {
 
 main {
     width: 100%;
-    background: #fff;
-    box-shadow: 0 0 10px var(--dark-grey);
+    background: var(--white);
+    box-shadow: 0 0 1rem var(--dark-grey);
 }
 
 article {
@@ -55,7 +82,8 @@ article {
 }
 
 .player-screen {
-    padding: 8rem 4rem;
+    width: 50%;
+    padding: var(--player-screen-clamp) calc(var(--player-screen-clamp) / 2);
 }
 
 .player-screen.active {
@@ -64,17 +92,17 @@ article {
 
 .player-screen h2 {
     position: relative;
-    font-size: 2.5rem;
+    font-size: var(--base-clamp);
     font-weight: 300;
     text-transform: uppercase;
 }
 
 .span-mark {
     position: absolute;
-    width: 20px;
-    height: 20px;
+    width: var(--mark-clamp);
+    aspect-ratio: 1 / 1;
     top: 50%;
-    right: -40px;
+    right: calc(var(--base-clamp) * -1);
     transform: translateY(-50%);
     background: var(--red);
     border-radius: 50%;
@@ -95,7 +123,8 @@ article {
 }
 
 .player-current-score {
-    padding: 1.5rem 3rem;
+    font-size: var(--mark-clamp);
+    padding: calc(var(--base-clamp) / 2) var(--base-clamp);
     background: var(--red);
     width: max-content;
 }
@@ -106,11 +135,11 @@ article {
 
 .player-current-score span:first-child {
     text-transform: uppercase;
-    margin-bottom: calc(1rem / 16 * 15);
+    margin-bottom: var(--mark-clamp);
 }
 
 .player-current-score span:last-child {
-    font-size: 3rem;
+    font-size: 4.8rem;
     color: var(--light-grey);
 }
 
@@ -126,30 +155,30 @@ article {
     display: flex;
     align-items: center;
     align-self: center;
-    font-size: 1.5rem;
+    font-size: var(--btn-svg-text-clamp);
     font-weight: 400;
     text-transform: uppercase;
 }
 
 .game-condition button svg {
-    width: 25px;
+    width: var(--btn-svg-text-clamp);
     height: auto;
     fill: none;
     stroke: var(--red);
-    stroke-width: calc(1rem / 8);
-    margin-right: calc(1rem / 16 * 15);
+    stroke-width: .2rem;
+    margin-right: 3rem;
 }
 
 .dice, .indicator {
-    background: white;
-    box-shadow: 0 0 15px rgb(0 0 0 / .3);
+    background: var(--white);
+    box-shadow: 0 0 15px rgb(var(--dark) / .3);
 }
 
 .dice {
-    width: calc(1rem / 16 * 150);
-    height: calc(1rem / 16 * 150);
-    margin: calc(1rem / 16 * 200) 0;
-    padding: calc(1rem / 16 * 20);
+    width: var(--dice-clamp);
+    aspect-ratio: 1 / 1;
+    margin: 20rem 0;
+    padding: var(--mark-clamp);
 }
 
 .dice svg {
@@ -159,13 +188,23 @@ article {
 }
 
 .indicator {
-    width: calc(1rem / 16 * 380);
-    height: calc(1rem / 16 * 65);
-    font-size: 1.3rem;
-    padding: calc(1rem / 16 * 15);
+    max-width: 38rem;
+    max-height: 6.5rem;
+    font-size: var(--mark-clamp);
+    padding: var(--mark-clamp);
     text-align: center;
 }
 
 .indicator.hidden {
     visibility: hidden;
+}
+
+@media screen and (max-width: 1050px) {
+    .game-condition {
+        height: 50%;
+    }
+
+    .dice {
+        margin: 2rem 0
+    }
 }
