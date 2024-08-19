@@ -132,9 +132,9 @@ function Players() {
             player.playing = false
 
             if (player.global >= 100) {
+                screenIndicator.innerHTML = `<b>Player ${player.id + 1}</b> win the game with <strong>${player.global}</strong> points.`
                 globalScoreDivs[player.id].textContent = player.global
                 screenIndicator.classList.remove('hidden')
-                screenIndicator.textContent = `Player ${player.id + 1} win the game with ${player.global} points.`
                 return
             }
 

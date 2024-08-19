@@ -2,7 +2,10 @@
 
 :root {
     /*--------------< Colors >--------------*/
-    --red: #f24942;
+    --primary-color: #f24942;
+    --secondary-color: #00a59c;;
+    --tertiary-color: #973be3;
+    --secondary-color-dark: #018c85;
     --dark: 0 0 0;
     --dark-grey: #202020;
     --light-grey: #eeeeee;
@@ -27,6 +30,9 @@
     --medium-clamp: clamp(calc(var(--min-size) * var(--medium-ratio)), calc(var(--base-size) * var(--medium-ratio)), calc(var(--max-size) * var(--medium-ratio)));
     --btn-svg-text-clamp: clamp(calc(var(--min-size) * var(--btn-svg-text-ratio)), calc(var(--base-size) * var(--btn-svg-text-ratio)), calc(var(--max-size) * var(--btn-svg-text-ratio)));
     --dice-clamp: clamp(calc(var(--min-size) * var(--dice-ratio)), calc(var(--base-size) * var(--dice-ratio)), calc(var(--max-size) * var(--dice-ratio)));
+    
+    /*--------------< Animation >--------------*/
+    --transition: .5s;
 }
 
 /*=====================================| RESET |=====================================*/
@@ -42,6 +48,7 @@ button {
     outline: none;
     background: none;
     padding: 1rem;
+    cursor: pointer;
 }
 
 /*=====================================| MAIN |=====================================*/
@@ -50,8 +57,6 @@ html {
 }
 
 body {
-    background: linear-gradient(#b58851, #81512d) no-repeat;
-    padding: 2rem 3rem;
     height: 100vh;
     color: var(--dark-grey)
 }
@@ -63,7 +68,6 @@ main, article {
 main {
     width: 100%;
     background: var(--white);
-    box-shadow: 0 0 1rem var(--dark-grey);
 }
 
 article {
@@ -99,7 +103,7 @@ article {
 .span-mark {
     width: var(--medium-clamp);
     aspect-ratio: 1 / 1;
-    background: var(--red);
+    background: var(--primary-color);
     border-radius: 50%;
 }
 
@@ -116,13 +120,13 @@ article {
 .player-global-score > div:last-child {
     font-size: var(--large-clamp);
     font-weight: 300;
-    color: var(--red);
+    color: var(--primary-color);
 }
 
 .player-current-score {
     font-size: var(--medium-clamp);
     padding: calc(var(--base-clamp) / 2) var(--base-clamp);
-    background: var(--red);
+    background: var(--primary-color);
     width: max-content;
 }
 
@@ -158,22 +162,40 @@ article {
     text-transform: uppercase;
 }
 
+.game-condition button.main-btn {
+    background: var(--secondary-color);
+    color: var(--white);
+    border-radius: .5rem;
+    transition: background calc(var(--transition) * .5);
+    padding: 1rem var(--medium-clamp);
+    margin: var(--medium-clamp) 0;
+}
+
+.game-condition button.main-btn:hover {
+    background: var(--secondary-color-dark);
+}
+
 .game-condition button svg {
     width: var(--btn-svg-text-clamp);
     height: auto;
     fill: none;
-    stroke: var(--red);
-    stroke-width: .2rem;
+    stroke: var(--primary-color);
+    stroke-width: .4rem;
+}
+
+.game-condition button.main-btn svg {
+    stroke: var(--white);
 }
 
 .dice, .indicator {
     background: var(--white);
-    box-shadow: 0 0 var(--medium-clamp) rgb(var(--dark) / .3);
+    box-shadow: 0 0 var(--medium-clamp) rgb(var(--dark) / .15);
 }
 
 .dice {
     width: var(--dice-clamp);
     aspect-ratio: 1 / 1;
+    border-radius: 1.5rem;
     margin: 20rem 0;
     padding: var(--medium-clamp);
 }
@@ -181,7 +203,7 @@ article {
 .dice svg {
     width: 100%;
     height: auto;
-    fill: var(--red);
+    fill: var(--primary-color);
 }
 
 .indicator {
@@ -190,6 +212,11 @@ article {
     font-size: var(--medium-clamp);
     padding: var(--medium-clamp);
     text-align: center;
+}
+
+.indicator strong {
+    color: var(--primary-color);
+    font-weight: 700;
 }
 
 .indicator.hidden {
